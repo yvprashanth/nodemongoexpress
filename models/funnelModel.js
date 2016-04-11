@@ -2,14 +2,14 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var funnelModel = new Schema({
-    offerDisplayed: { type: Number },
-    offerClicked: {type: Number },
-    wsMigLanding: {type: Number},
-    wsMigLandingContinuePurchase: {type: Number}
-    workspacemailbox : {type: Number },
-    wsMailboxsuccessfullyTransitionedToCart : {type: Number },
-    rescheduleModalClicked : {type: Number },
-    rescheduleModalUpdate : {type: Number }
+    offerDisplayed: { type: String },
+    offerClicked: {type: String },
+    wsMigLanding: {type: String},
+    wsMigLandingContinuePurchase: {type: String},
+    workspacemailbox : {type: String },
+    wsMailboxsuccessfullyTransitionedToCart : {type: String },
+    rescheduleModalClicked : {type: String },
+    rescheduleModalUpdate : {type: String }
 });
 
-module.exports= mongoose.model('Book', bookModel);
+module.exports= mongoose.model('Funnel', funnelModel);
