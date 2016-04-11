@@ -2,9 +2,9 @@ var express = require('express');
 
 
 var routes = function(Book){
-    var bookRouter = express.Router();
+    var funnelRouter = express.Router();
 
-    bookRouter.route('/')
+    funnelRouter.route('/')
         .post(function(req, res){
             var book = new Book(req.body);
             book.save();
@@ -25,7 +25,7 @@ var routes = function(Book){
             });
         });
 
-    bookRouter.use('/:bookId', function(req,res, next){
+    funnelRouter.use('/:bookId', function(req,res, next){
         Book.findById(req.params.bookId, function(err,book){
             if(err)
                 res.status(500).send(err);
@@ -41,7 +41,7 @@ var routes = function(Book){
         });
     });
 
-    bookRouter.route('/:bookId')
+    funnelRouter.route('/:bookId')
         .get(function(req,res){
             res.json(req.book);
         })
@@ -84,7 +84,7 @@ var routes = function(Book){
                 }
             });
         });
-    return bookRouter;
+    return funnelRouter;
 };
 
 module.exports = routes;
