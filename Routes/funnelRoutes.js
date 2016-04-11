@@ -16,10 +16,8 @@ var routes = function(Funnel){
             // {
             //     query.genre = req.query.genre;
             // }
-            
-            Funnel.find(function(err, funnel){
-              console.log(err);
-              console.log(funnel);
+
+            Funnel.find(function(err, funnel){              
                 if(err)
                     res.status(500).send(err);
                 else
