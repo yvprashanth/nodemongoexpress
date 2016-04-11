@@ -18,7 +18,7 @@ app.get('/', function(req, res){
 
 var funnelRouter = require('./Routes/bookRoutes')(Book);
 
-app.use('/api', funnelRouter);
+app.use('/api/books', funnelRouter); 
 
 app.listen(port, function(){
     console.log('Gulp is running my app on PORT : ' + port);
