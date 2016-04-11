@@ -7,16 +7,12 @@ var routes = function(Book){
     bookRouter.route('/')
         .post(function(req, res){
             var book = new Book(req.body);
-
-
             book.save();
             res.status(201).send(book);
-
         })
         .get(function(req,res){
 
             var query = {};
-
             if(req.query.genre)
             {
                 query.genre = req.query.genre;
@@ -44,11 +40,10 @@ var routes = function(Book){
             }
         });
     });
+
     bookRouter.route('/:bookId')
         .get(function(req,res){
-
             res.json(req.book);
-
         })
         .put(function(req,res){
             req.book.title = req.body.title;
