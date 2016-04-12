@@ -5,19 +5,21 @@ var routes = function(Funnel){
 
     funnelRouter.route('/')
         .post(function(req, res){
-            var funnel = new Funnel(req.body);
-            funnel.save();
-            res.status(201).send(funnel);
+            Funnel.find({"id" : req.body.id}, function(err, response){
+                    debugger;
+                    var funnel = new Funnel(req.body);
+                    funnel.save();
+                    res.status(201).send(funnel);
+                  });
+
         })
         .get(function(req, res){
-            console.log("Inside Funnel Get Data");
             var query = {};
             // if(req.query.genre)
             // {
             //     query.genre = req.query.genre;
             // }
-
-            Funnel.find(function(err, funnel){              
+            Funnel.find(function(err, funnel){
                 if(err)
                     res.status(500).send(err);
                 else
@@ -26,6 +28,7 @@ var routes = function(Funnel){
         });
 
     funnelRouter.use('/:funnelId', function(req,res, next){
+
         Funnel.findById(req.params.funnelId, function(err,funnel){
             if(err)
                 res.status(500).send(err);
@@ -58,6 +61,12 @@ var routes = function(Funnel){
                 }
             });
         })
+        // .post(function(req,res){
+        //     db.funnels.find({"id" : 1460418854234}, function(err, response){
+        //       debugger;
+        //
+        //     });
+        // })
         .patch(function(req,res){
             if(req.body._id)
                 delete req.body._id;
